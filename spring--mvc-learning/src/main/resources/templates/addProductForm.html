@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Product</title>
+</head>
+<body>
+<div style="text-align:center">
+    <h1 style="color:green" th:text="${successMessage}"></h1>
+    <h1>Add Product</h1>
+    <form action="#" th:action="@{/product/save}" method="post" th:object="${product}">
+        <label>Product name:</label>
+        <input type="text" th:field="*{name}"/><br/><br/>
+
+        <label>Product price:</label>
+        <input type="text" th:field="*{price}"/><br/></br>
+
+        <label>Is prime product:</label>
+        <input type="radio" value="true" th:field="*{isPrimeProduct}"/> Yes
+        <input type="radio" value="false" th:field="*{isPrimeProduct}"/> No
+
+        <br/></br>
+
+        <label>Select Category :</label>
+        <select th:field="*{category}">
+            <option th:each="category : ${categories}" th:value="${category}" th:text="${category}" />
+        </select>
+        <br/>
+
+
+        <button type="submit">Add</button>
+    </form>
+</div>
+</body>
+</html>
